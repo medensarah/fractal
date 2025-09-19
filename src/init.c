@@ -1,30 +1,12 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: smedenec <smedenec@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/19 21:59:31 by smedenec          #+#    #+#             */
-/*   Updated: 2025/09/19 22:35:45 by smedenec         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "../ft_libft/ft_libft.h"
-#include "../ft_printf/ft_printf.h"
 #include "fractol.h"
 
-int	test(int le)
+void	init(t_fractal *fractal)
 {
-	ft_printf("c'est ok\n");
-	return (le);
-}
-
-int	main(void)
-{
-	int	le;
-
-	le = 1;
-	test(le);
-	return (0);
+	fractal->mlx_ptr = mlx_init();
+	fractal->mlx_win = mlx_new_window(fractal->mlx_ptr,
+			WIDTH, HEIGHT, fractal->name);
+	fractal->img.img = mlx_new_image(fractal->mlx_ptr, WIDTH, HEIGHT);
+	fractal->img.addr = mlx_get_data_addr(fractal->img.img,
+			&fractal->img.bits_per_pixel,
+			&fractal->img.line_length, &fractal->img.endian);
 }

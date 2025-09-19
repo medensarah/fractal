@@ -6,7 +6,7 @@
 /*   By: smedenec <smedenec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 13:12:41 by smedenec          #+#    #+#             */
-/*   Updated: 2025/09/19 22:13:13 by smedenec         ###   ########.fr       */
+/*   Updated: 2025/09/19 23:35:51 by smedenec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,38 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <limits.h>
+# include "../minilibx-linux/mlx.h"
+#define WIDTH 1920
+#define HEIGHT 1080
 
-# define GREEN		"\033[0;38;2;142;194;121m"
-# define LIGREEN	"\033[0;38;2;142;255;105m"
-# define RED		"\033[0;38;2;235;76;76;49m"
-# define LIRED		"\033[0;38;2;247;14;21;49m"
-# define NONE		"\033[0m"
 
-typedef struct s_list {
-	int				nbr;
-	struct s_list	*next;
-}	t_list;
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}			t_data;
 
-int	test(int le);
+typedef struct s_fractal
+{
+	void	*mlx_ptr;
+	void	*mlx_win;
+	int		iterations;
+	char	*name;
+	int		active_julia;
+	int		color_change;
+	double	shift_x;
+	double	shift_y;
+	double	julia_x;
+	double	julia_y;
+	double	zoom;
+	t_data	img;
+}		t_fractal;
+
+
+void	init(t_fractal *fractol);
+
+
 
 #endif
