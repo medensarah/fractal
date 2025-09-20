@@ -6,7 +6,7 @@
 /*   By: smedenec <smedenec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 13:12:41 by smedenec          #+#    #+#             */
-/*   Updated: 2025/09/19 23:35:51 by smedenec         ###   ########.fr       */
+/*   Updated: 2025/09/20 01:45:42 by smedenec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <string.h>
 # include <stddef.h>
 # include <stdlib.h>
+# include <unistd.h>
 # include <limits.h>
 # include "../minilibx-linux/mlx.h"
 #define WIDTH 1920
