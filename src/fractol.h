@@ -6,7 +6,7 @@
 /*   By: smedenec <smedenec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 13:12:41 by smedenec          #+#    #+#             */
-/*   Updated: 2025/09/20 01:45:42 by smedenec         ###   ########.fr       */
+/*   Updated: 2025/10/11 18:14:10 by smedenec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@
 # include <unistd.h>
 # include <limits.h>
 # include "../minilibx-linux/mlx.h"
-#define WIDTH 1920
-#define HEIGHT 1080
 
+# define WIDTH 1920
+# define HEIGHT 1080
 
-typedef struct	s_data {
+typedef struct s_data {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -48,9 +48,6 @@ typedef struct s_fractal
 	t_data	img;
 }		t_fractal;
 
-
 void	init(t_fractal *fractol);
-
-
 
 #endif

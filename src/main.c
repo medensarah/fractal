@@ -6,7 +6,7 @@
 /*   By: smedenec <smedenec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 21:59:31 by smedenec          #+#    #+#             */
-/*   Updated: 2025/09/20 06:03:59 by smedenec         ###   ########.fr       */
+/*   Updated: 2025/10/11 18:13:26 by smedenec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	char	*dst;
 
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	*(unsigned int *)dst = color;
 }
 
 int	main(void)
@@ -25,9 +25,9 @@ int	main(void)
 	t_fractal	fractal;
 
 	init(&fractal);
-	my_mlx_pixel_put(&fractal.img,5,5,0xFF0000);
-	mlx_put_image_to_window(fractal.mlx_ptr, fractal.mlx_win, fractal.img.img, 0, 0);
+	my_mlx_pixel_put(&fractal.img, 5, 5, 0xFF0000);
+	mlx_put_image_to_window(fractal.mlx_ptr, fractal.mlx_win,
+		fractal.img.img, 0, 0);
 	mlx_loop(fractal.mlx_ptr);
 	return (0);
 }
-

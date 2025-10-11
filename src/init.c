@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: smedenec <smedenec@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/11 18:14:23 by smedenec          #+#    #+#             */
+/*   Updated: 2025/10/11 18:15:35 by smedenec         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
 void	init(t_fractal *fractal)
@@ -10,4 +22,3 @@ void	init(t_fractal *fractal)
 			&fractal->img.bits_per_pixel,
 			&fractal->img.line_length, &fractal->img.endian);
 }
-
