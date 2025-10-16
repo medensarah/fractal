@@ -6,7 +6,7 @@
 /*   By: smedenec <smedenec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 21:59:31 by smedenec          #+#    #+#             */
-/*   Updated: 2025/10/11 18:13:26 by smedenec         ###   ########.fr       */
+/*   Updated: 2025/10/11 18:22:28 by smedenec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,3 +31,4 @@ int	main(void)
 	mlx_loop(fractal.mlx_ptr);
 	return (0);
 }
+// https://github.com/42paris/minilibx-linux
