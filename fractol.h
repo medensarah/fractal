@@ -6,7 +6,7 @@
 /*   By: smedenec <smedenec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 13:12:41 by smedenec          #+#    #+#             */
-/*   Updated: 2025/10/16 17:22:08 by smedenec         ###   ########.fr       */
+/*   Updated: 2025/10/28 18:36:35 by smedenec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ typedef struct s_fractal
 }		t_fractal;
 
 void	init(t_fractal *fractol);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 #endif
