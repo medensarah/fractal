@@ -11,8 +11,11 @@ int	parsing(int argc, char **argv, t_fractal *fractal)
 		fractal->name = argv[1];
 		if ((!ft_strcmp(argv[1], "julia")) && argv[2] && argv[3])
 		{
+			printf("iiii");
+			printf("%d\n", is_number(argv[2]));
 			if (is_number(argv[2]) && is_number(argv[3]) && strlong(argv[2]) && strlong(argv[3]))
 				{
+
 					fractal->julia_x = atoi_double(argv[2]);
 					fractal->julia_y = atoi_double(argv[3]);
 					return (1);
@@ -78,7 +81,7 @@ int	is_number(char *str)
 		i++;
 	while (str[i])
 	{
-		if ((str[i] != '+') && (str[i] != '-') && (str[i] != '-') && !(str[i] >= '0' && str[i] <= '9'))
+		if ((str[i] != '+') && (str[i] != '-') && (str[i] != '.') && !(str[i] >= '0' && str[i] <= '9'))
 			return (0);
 		if ((str[i] == '+') && (str[i] == '-'))
 			sign++;
@@ -86,7 +89,7 @@ int	is_number(char *str)
 			point++;
 		i++;
 	}
-	if (point != 1 || sign != 1)
+	if (point != 1)
 		return (0);
 	return (1);
 }

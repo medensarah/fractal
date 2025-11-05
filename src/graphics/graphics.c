@@ -109,15 +109,20 @@ void    display_pixel(t_fractal *fractal, int x, int y)
     int         color;
 	double		t;
 
-    //c.r = convert_range(x, WIDTH, -3, 3); //madelbrot
-    //c.i = convert_range(y, HEIGHT, -2, 2);
-    //z.r = c.r;
-    //z.i = c.i;
-
-	c.r = 0.4;							//julia
-	c.i = 0.3;
-    z.r = convert_range(x, WIDTH, -3, 3) * fractal->zoom + fractal->shift_x;
-    z.i = convert_range(y, HEIGHT, -2, 2) * fractal->zoom + fractal->shift_y;;
+	if (!strcmp(fractal->name,"mandelbrot"))
+	{
+		c.r = convert_range(x, WIDTH, -3, 3);
+    	c.i = convert_range(y, HEIGHT, -2, 2);
+    	z.r = c.r;
+    	z.i = c.i;
+	}
+	if (!strcmp(fractal->name,"julia"))
+	{
+		c.r = fractal->julia_x;
+		c.i = fractal->julia_y;
+		z.r = convert_range(x, WIDTH, -3, 3) * fractal->zoom + fractal->shift_x;
+		z.i = convert_range(y, HEIGHT, -2, 2) * fractal->zoom + fractal->shift_y;;
+	}
     while ((z.r * z.r + z.i * z.i) < 4)
     {
         i++;
