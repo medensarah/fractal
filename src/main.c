@@ -24,14 +24,21 @@ void	display_fractal(t_fractal *fractal)
 		}
 		x++;
 	}
-			//my_mlx_pixel_put(&fractal->img, x, y++, 0xFF0000);
 }
 
+#include <stdio.h>
 
 int	main(int argc, char **argv)
 {
 	t_fractal	fractal;
 
+	if (argc == 1)
+	{
+		printf("Available parameters :\n");
+		printf("mandelbrot\n");
+		printf("julia <float> <float>\n");
+		return (1);
+	}
 	if (!parsing(argc, argv, &fractal))
 		return (0);
 	fractal_init(&fractal);

@@ -1,0 +1,3 @@
+arguments modifiables julia et mandelbrot
+rajouter la ft_printf
+enlever stdio.h

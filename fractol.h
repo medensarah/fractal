@@ -57,12 +57,13 @@ void    display_pixel(t_fractal *fractal, int x, int y);
 
 
 // maths
-
 double	convert_range(double v, double max_src, double min_dst, double max_dst);
 
 // parsing
-
-int parsing(int argc, char **argv, t_fractal *fractal);
-int ft_strcmp(const char *s1, const char *s2);
+double	atoi_double(char *str);
+int		is_number(char *str);
+int		parsing(int argc, char **argv, t_fractal *fractal);
+int		ft_strcmp(const char *s1, const char *s2);
+int		strlong(char *str);
 
 #endif
