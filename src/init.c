@@ -22,7 +22,7 @@ void	event_init(t_fractal *fractal)
 
 void	fractal_init(t_fractal *fractal)
 {
-	fractal->iterations = 20;
+	fractal->iterations = 10;
 	fractal->shift_x = 0;
 	fractal->shift_y = 0;
 	fractal->zoom = 1;

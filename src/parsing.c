@@ -11,8 +11,6 @@ int	parsing(int argc, char **argv, t_fractal *fractal)
 		fractal->name = argv[1];
 		if ((!ft_strcmp(argv[1], "julia")) && argv[2] && argv[3])
 		{
-			printf("iiii");
-			printf("%d\n", is_number(argv[2]));
 			if (is_number(argv[2]) && is_number(argv[3]) && strlong(argv[2]) && strlong(argv[3]))
 				{
 

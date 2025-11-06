@@ -12,7 +12,7 @@
 # include <math.h>
 # include "minilibx-linux/mlx.h"
 
-# define WIDTH 1920
+# define WIDTH 1080
 # define HEIGHT 1080
 
 typedef struct s_data {
@@ -23,7 +23,7 @@ typedef struct s_data {
 	int		endian;
 }			t_data;
 
-typedef struct s_fractal
+typedef struct t_fractal
 {
 	void	*mlx_ptr;
 	void	*mlx_win;

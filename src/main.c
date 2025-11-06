@@ -26,8 +26,6 @@ void	display_fractal(t_fractal *fractal)
 	}
 }
 
-#include <stdio.h>
-
 int	main(int argc, char **argv)
 {
 	t_fractal	fractal;

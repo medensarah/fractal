@@ -22,30 +22,23 @@ int    close_handler(t_fractal *fractal)
 
 int	key_handler(int keycode, t_fractal *fractal)
 {
-	//printf("keycode:%d\n", keycode);
+	printf("keycode:%d\n", keycode);
 	if (keycode == XK_Escape)
 		close_handler(fractal);
-	else if (keycode == XK_Left)
-		fractal->shift_x -= (0.5 * fractal->zoom);
-	else if (keycode == XK_Right)
-		fractal->shift_x += (0.5 * fractal->zoom);
-	else if (keycode == XK_Up)
-		fractal->shift_y -= (0.5 * fractal->zoom);
-	else if (keycode == XK_Down)
-		fractal->shift_y += (0.5 * fractal->zoom);
+	else if (keycode == XK_Left || keycode == 65361)
+		fractal->shift_x -= (0.2 * fractal->zoom);
+	else if (keycode == XK_Right || keycode == 65363)
+		fractal->shift_x += (0.2 * fractal->zoom);
+	else if (keycode == XK_Up || keycode == 65362)
+		fractal->shift_y -= (0.2 * fractal->zoom);
+	else if (keycode == XK_Down || keycode == 65364)
+		fractal->shift_y += (0.2 * fractal->zoom);
 	else if (keycode == XK_plus || keycode == 65451)
 		fractal->iterations += 5;
 	else if (keycode == XK_minus || keycode == 65453)
 		fractal->iterations -= 5;
 	else if (keycode == 101)
 		fractal->color_change += 50;
-	else if (keycode == 106)
-	{
-		if (fractal->active_julia)
-			fractal->active_julia = 0;
-		else
-			fractal->active_julia = 1;
-	}
 	display_fractal(fractal);
 	mlx_put_image_to_window(fractal->mlx_ptr, fractal->mlx_win,
 		fractal->img.img, 0, 0);
@@ -111,8 +104,8 @@ void    display_pixel(t_fractal *fractal, int x, int y)
 
 	if (!strcmp(fractal->name,"mandelbrot"))
 	{
-		c.r = convert_range(x, WIDTH, -3, 3);
-    	c.i = convert_range(y, HEIGHT, -2, 2);
+		c.r = convert_range(x, WIDTH, -1.5, 0.5) * fractal->zoom + fractal->shift_x;
+    	c.i = convert_range(y, HEIGHT, -1, 1) * fractal->zoom + fractal->shift_y;
     	z.r = c.r;
     	z.i = c.i;
 	}
@@ -120,8 +113,8 @@ void    display_pixel(t_fractal *fractal, int x, int y)
 	{
 		c.r = fractal->julia_x;
 		c.i = fractal->julia_y;
-		z.r = convert_range(x, WIDTH, -3, 3) * fractal->zoom + fractal->shift_x;
-		z.i = convert_range(y, HEIGHT, -2, 2) * fractal->zoom + fractal->shift_y;;
+		z.r = convert_range(x, WIDTH, -1.5, 1.5) * fractal->zoom + fractal->shift_x;
+		z.i = convert_range(y, HEIGHT, -1.5, 1.5) * fractal->zoom + fractal->shift_y;;
 	}
     while ((z.r * z.r + z.i * z.i) < 4)
     {
