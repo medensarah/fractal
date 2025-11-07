@@ -6,7 +6,7 @@
 /*   By: smedenec <smedenec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 20:49:33 by smedenec          #+#    #+#             */
-/*   Updated: 2025/11/07 20:51:27 by smedenec         ###   ########.fr       */
+/*   Updated: 2025/11/07 23:37:54 by smedenec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	event_init(t_fractal *fractal)
 	mlx_hook(fractal->mlx_win,
 		ButtonPress,
 		ButtonPressMask,
-		mouse_handler,
+		mouse_wrapper,
 		fractal);
 	mlx_hook(fractal->mlx_win,
 		DestroyNotify,
@@ -58,4 +58,13 @@ void	*init_img(t_fractal *fractal)
 	if (!(fractal->img.addr))
 		return (close_handler(fractal), NULL);
 	return (fractal);
+}
+
+int	mouse_wrapper(int button, int x, int y, void *param)
+{
+	t_point	p;
+
+	p.x = x;
+	p.y = y;
+	return (mouse_handler(button, p, (t_fractal *)param));
 }

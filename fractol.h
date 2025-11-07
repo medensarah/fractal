@@ -6,7 +6,7 @@
 /*   By: smedenec <smedenec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 21:09:32 by smedenec          #+#    #+#             */
-/*   Updated: 2025/11/07 21:11:20 by smedenec         ###   ########.fr       */
+/*   Updated: 2025/11/07 23:35:55 by smedenec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,21 +49,35 @@ typedef struct t_fractal
 	double	julia_y;
 	double	zoom;
 	t_data	img;
-}		t_fractal;
+}			t_fractal;
+
+typedef struct s_complex
+{
+	float	r;
+	float	i;
+}				t_complex;
+
+typedef struct s_point
+{
+	int	x;
+	int	y;
+}			t_point;
 
 void	*init_img(t_fractal *fractal);
 void	fractal_init(t_fractal *fractal);
 void	event_init(t_fractal *fractal);
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	my_mlx_pixel_put(t_data *data, t_point p, int color);
 
 //handler
-int		mouse_handler(int button, int x, int y, t_fractal *fractal);
+int		mouse_wrapper(int button, int x, int y, void *param);
+int		mouse_handler(int button, t_point p, t_fractal *fractal);
 int		key_handler(int keycode, t_fractal *fractal);
 int		close_handler(t_fractal *fractal);
 
 //graphics
 void	display_fractal(t_fractal *fractal);
-void	display_pixel(t_fractal *fractal, int x, int y);
+void	display_pixel(t_fractal *fractal, t_point p);
+void	draw_pixel(t_fractal *fractal, t_complex *c, t_complex *z, t_point p);
 
 //maths
 double	convert_range(double v, double max_src, double min_dst, double max_dst);

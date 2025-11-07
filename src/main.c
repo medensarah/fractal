@@ -6,35 +6,35 @@
 /*   By: smedenec <smedenec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 20:49:49 by smedenec          #+#    #+#             */
-/*   Updated: 2025/11/07 20:49:52 by smedenec         ###   ########.fr       */
+/*   Updated: 2025/11/07 23:40:29 by smedenec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+void	my_mlx_pixel_put(t_data *data, t_point p, int color)
 {
 	char	*dst;
 
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	dst = data->addr + (p.y * data->line_length + p.x
+			* (data->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }
 
 void	display_fractal(t_fractal *fractal)
 {
-	int	x;
-	int	y;
+	t_point	p;
 
-	x = 0;
-	while (x < WIDTH)
+	p.x = 0;
+	while (p.x < WIDTH)
 	{
-		y = 0;
-		while (y < HEIGHT)
+		p.y = 0;
+		while (p.y < HEIGHT)
 		{
-			display_pixel(fractal, x, y);
-			y++;
+			display_pixel(fractal, p);
+			p.y++;
 		}
-		x++;
+		p.x++;
 	}
 }
 
