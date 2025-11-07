@@ -1,4 +1,3 @@
 Parsing arguments modifiables (overflow) julia ??
-diviser en deux la fonction 'void	display_pixel'
-Rajouter la ft_printf
+Enlever tout les printf
 Enlever stdio.h

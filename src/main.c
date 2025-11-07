@@ -6,7 +6,7 @@
 /*   By: smedenec <smedenec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 20:49:49 by smedenec          #+#    #+#             */
-/*   Updated: 2025/11/07 23:40:29 by smedenec         ###   ########.fr       */
+/*   Updated: 2025/11/08 00:14:14 by smedenec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ int	main(int argc, char **argv)
 
 	if (argc == 1)
 	{
-		printf("Available parameters :\n");
-		printf("mandelbrot\n");
-		printf("julia <float> <float>\n");
+		write(1, "Available parameters :\n", 24);
+		write(1, "mandelbrot\n", 11);
+		write(1, "julia <float> <float>\n", 22);
 		return (1);
 	}
 	if (!parsing(argc, argv, &fractal))

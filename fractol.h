@@ -6,16 +6,17 @@
 /*   By: smedenec <smedenec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 21:09:32 by smedenec          #+#    #+#             */
-/*   Updated: 2025/11/07 23:35:55 by smedenec         ###   ########.fr       */
+/*   Updated: 2025/11/08 00:15:09 by smedenec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
+#include <stdio.h>
+
 # include <X11/X.h>
 # include <X11/keysym.h>
-# include <stdio.h>
 # include <string.h>
 # include <stddef.h>
 # include <stdlib.h>
