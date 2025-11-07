@@ -1,5 +1,16 @@
-#include "../fractol.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: smedenec <smedenec@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/07 20:49:33 by smedenec          #+#    #+#             */
+/*   Updated: 2025/11/07 20:51:27 by smedenec         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "../fractol.h"
 
 void	event_init(t_fractal *fractal)
 {
@@ -35,7 +46,7 @@ void	*init_img(t_fractal *fractal)
 	if (!(fractal->mlx_ptr))
 		return (NULL);
 	fractal->mlx_win = mlx_new_window(fractal->mlx_ptr,
-		WIDTH, HEIGHT, "fractol");
+			WIDTH, HEIGHT, "fractol");
 	if (!(fractal->mlx_win))
 		return (close_handler(fractal), NULL);
 	fractal->img.img = mlx_new_image(fractal->mlx_ptr, WIDTH, HEIGHT);

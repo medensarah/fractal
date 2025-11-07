@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: smedenec <smedenec@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/07 20:49:17 by smedenec          #+#    #+#             */
+/*   Updated: 2025/11/07 20:55:00 by smedenec         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../fractol.h"
 
 int	parsing(int argc, char **argv, t_fractal *fractal)
@@ -6,18 +18,19 @@ int	parsing(int argc, char **argv, t_fractal *fractal)
 		return (0);
 	if (argc != 2 && argc != 4)
 		return (0);
-	if (argv[1] && ((!ft_strcmp(argv[1], "mandelbrot")) || (!ft_strcmp(argv[1], "julia"))))
+	if (argv[1] && ((!ft_strcmp(argv[1], "mandelbrot"))
+			|| (!ft_strcmp(argv[1], "julia"))))
 	{
 		fractal->name = argv[1];
 		if ((!ft_strcmp(argv[1], "julia")) && argv[2] && argv[3])
 		{
-			if (is_number(argv[2]) && is_number(argv[3]) && strlong(argv[2]) && strlong(argv[3]))
-				{
-
-					fractal->julia_x = atoi_double(argv[2]);
-					fractal->julia_y = atoi_double(argv[3]);
-					return (1);
-				}
+			if (is_number(argv[2]) && is_number(argv[3])
+				&& strlong(argv[2]) && strlong(argv[3]))
+			{
+				fractal->julia_x = atoi_double(argv[2]);
+				fractal->julia_y = atoi_double(argv[3]);
+				return (1);
+			}
 			return (0);
 		}
 		return (1);
@@ -79,7 +92,8 @@ int	is_number(char *str)
 		i++;
 	while (str[i])
 	{
-		if ((str[i] != '+') && (str[i] != '-') && (str[i] != '.') && !(str[i] >= '0' && str[i] <= '9'))
+		if ((str[i] != '+') && (str[i] != '-') && (str[i] != '.')
+			&& !(str[i] >= '0' && str[i] <= '9'))
 			return (0);
 		if ((str[i] == '+') && (str[i] == '-'))
 			sign++;

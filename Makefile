@@ -16,7 +16,7 @@ MLX = -Lminilibx-linux -lmlx_Linux -lX11 -lXext -lm
 SRCS = src/main.c \
 		src/init.c \
 		src/maths.c \
-		src/graphics/graphics.c \
+		src/graphics.c \
 		src/parsing.c
 
 OBJS = $(SRCS:%.c=$(OBJDIR)/%.o)

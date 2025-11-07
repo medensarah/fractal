@@ -1,3 +1,4 @@
-arguments modifiables julia et mandelbrot ??
-rajouter la ft_printf
-enlever stdio.h
+Parsing arguments modifiables (overflow) julia ??
+diviser en deux la fonction 'void	display_pixel'
+Rajouter la ft_printf
+Enlever stdio.h

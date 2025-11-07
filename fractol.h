@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractol.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: smedenec <smedenec@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/07 21:09:32 by smedenec          #+#    #+#             */
+/*   Updated: 2025/11/07 21:11:20 by smedenec         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
@@ -44,22 +56,19 @@ void	fractal_init(t_fractal *fractal);
 void	event_init(t_fractal *fractal);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
-
 //handler
 int		mouse_handler(int button, int x, int y, t_fractal *fractal);
 int		key_handler(int keycode, t_fractal *fractal);
 int		close_handler(t_fractal *fractal);
 
-
 //graphics
 void	display_fractal(t_fractal *fractal);
-void    display_pixel(t_fractal *fractal, int x, int y);
+void	display_pixel(t_fractal *fractal, int x, int y);
 
-
-// maths
+//maths
 double	convert_range(double v, double max_src, double min_dst, double max_dst);
 
-// parsing
+//parsing
 double	atoi_double(char *str);
 int		is_number(char *str);
 int		parsing(int argc, char **argv, t_fractal *fractal);
