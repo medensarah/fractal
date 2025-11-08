@@ -6,7 +6,7 @@
 /*   By: smedenec <smedenec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 20:43:30 by smedenec          #+#    #+#             */
-/*   Updated: 2025/11/08 00:10:04 by smedenec         ###   ########.fr       */
+/*   Updated: 2025/11/08 01:50:02 by smedenec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	close_handler(t_fractal *fractal)
 
 int	key_handler(int keycode, t_fractal *fractal)
 {
-	printf("keycode:%d\n", keycode);
 	if (keycode == XK_Escape)
 		close_handler(fractal);
 	else if (keycode == XK_Left || keycode == 65361)

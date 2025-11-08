@@ -7,7 +7,7 @@ PURPLE = \033[0;38;2;194;170;242;49m
 NONE = \033[0m
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3
+CFLAGS = -Wall -Wextra -Werror
 
 NAME = fractol
 OBJDIR = obj

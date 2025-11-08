@@ -1,4 +1,2 @@
-Parsing arguments modifiables (overflow) julia ??
-Enlever tout les printf
-Enlever stdio.h
-enlever -g3
+Arguments julia x et y sont inverses ??
+Beaucoup trop lent sur lancement de mandelbrot
