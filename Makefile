@@ -7,7 +7,7 @@ PURPLE = \033[0;38;2;194;170;242;49m
 NONE = \033[0m
 
 CC = cc
-CFLAGS = -Wall -Wextra
+CFLAGS = -Wall -Wextra -Werror -g3
 
 NAME = fractol
 OBJDIR = obj
@@ -28,7 +28,6 @@ $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) $(MLX) -o $(NAME)
 	@echo "$(PINK)Build complete (./$(NAME))$(NONE)"
 
-# crée tous les dossiers nécessaires (ex : obj/src/)
 $(OBJDIR)/%.o: %.c
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@

@@ -6,7 +6,7 @@
 /*   By: smedenec <smedenec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 20:49:17 by smedenec          #+#    #+#             */
-/*   Updated: 2025/11/07 20:55:00 by smedenec         ###   ########.fr       */
+/*   Updated: 2025/11/08 01:45:50 by smedenec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,13 @@
 
 int	parsing(int argc, char **argv, t_fractal *fractal)
 {
-	if (!argv)
+	if (!argv || argc == 0)
 		return (0);
-	if (argc != 2 && argc != 4)
-		return (0);
-	if (argv[1] && ((!ft_strcmp(argv[1], "mandelbrot"))
-			|| (!ft_strcmp(argv[1], "julia"))))
+	if (argv[1] && (((!ft_strcmp(argv[1], "mandelbrot")) && (argc == 2))
+			|| ((!ft_strcmp(argv[1], "julia")) && argv[2] && argv[3])))
 	{
 		fractal->name = argv[1];
-		if ((!ft_strcmp(argv[1], "julia")) && argv[2] && argv[3])
+		if (!ft_strcmp(argv[1], "julia"))
 		{
 			if (is_number(argv[2]) && is_number(argv[3])
 				&& strlong(argv[2]) && strlong(argv[3]))
@@ -31,12 +29,15 @@ int	parsing(int argc, char **argv, t_fractal *fractal)
 				fractal->julia_y = atoi_double(argv[3]);
 				return (1);
 			}
+			write(1,
+				"Wrong input:\nJulia requires numbers between"
+				" -100.0 and 100.0, using a decimal point.\n", 85);
 			return (0);
 		}
 		return (1);
 	}
-	else
-		return (0);
+	write(1, "Wrong input\n", 12);
+	return (0);
 }
 
 int	ft_strcmp(const char *s1, const char *s2)
@@ -101,7 +102,7 @@ int	is_number(char *str)
 			point++;
 		i++;
 	}
-	if (point != 1)
+	if (point != 1 || sign >= 2)
 		return (0);
 	return (1);
 }
@@ -113,9 +114,11 @@ int	strlong(char *str)
 	i = 0;
 	if (!str)
 		return (0);
-	while (str[i])
+	if (str[i] == '+' && (str[i] == '-'))
 		i++;
-	if (i > 5)
+	while (str[i] && (str[i] != '.'))
+		i++;
+	if (i >= 3)
 		return (0);
 	return (1);
 }
