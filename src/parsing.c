@@ -6,7 +6,7 @@
 /*   By: smedenec <smedenec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 20:49:17 by smedenec          #+#    #+#             */
-/*   Updated: 2025/11/08 01:45:50 by smedenec         ###   ########.fr       */
+/*   Updated: 2025/11/09 02:25:20 by smedenec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@ int	parsing(int argc, char **argv, t_fractal *fractal)
 {
 	if (!argv || argc == 0)
 		return (0);
-	if (argv[1] && (((!ft_strcmp(argv[1], "mandelbrot")) && (argc == 2))
-			|| ((!ft_strcmp(argv[1], "julia")) && argv[2] && argv[3])))
+	if (((!ft_strcmp(argv[1], "mandelbrot")) && (argc == 2))
+		|| ((!ft_strcmp(argv[1], "julia")) && argv[2] && argv[3]
+			&& (argc == 4)))
 	{
 		fractal->name = argv[1];
-		if (!ft_strcmp(argv[1], "julia"))
+		if (!ft_strcmp(argv[1], "julia") && (argc == 4))
 		{
 			if (is_number(argv[2]) && is_number(argv[3])
 				&& strlong(argv[2]) && strlong(argv[3]))
@@ -31,7 +32,7 @@ int	parsing(int argc, char **argv, t_fractal *fractal)
 			}
 			write(1,
 				"Wrong input:\nJulia requires numbers between"
-				" -100.0 and 100.0, using a decimal point.\n", 85);
+				" -10.0 and 10.0, using a decimal point.\n", 83);
 			return (0);
 		}
 		return (1);
@@ -116,9 +117,15 @@ int	strlong(char *str)
 		return (0);
 	if (str[i] == '+' && (str[i] == '-'))
 		i++;
+	if (!(str[i] >= '0' && str[i] <= '9'))
+		return (0);
 	while (str[i] && (str[i] != '.'))
 		i++;
-	if (i >= 3)
+	if (str[i] == '.' && !(str[i + 1]))
+		return (0);
+	if (str[i + 1] && !(str[i + 1] >= '0' && str[i + 1] <= '9'))
+		return (0);
+	if (i >= 2)
 		return (0);
 	return (1);
 }

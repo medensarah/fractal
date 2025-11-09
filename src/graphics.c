@@ -6,29 +6,11 @@
 /*   By: smedenec <smedenec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 20:43:30 by smedenec          #+#    #+#             */
-/*   Updated: 2025/11/07 23:34:10 by smedenec         ###   ########.fr       */
+/*   Updated: 2025/11/09 02:12:29 by smedenec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
-
-t_complex	square_complex(t_complex nb)
-{
-	t_complex	res;
-
-	res.r = nb.r * nb.r + -((nb.i) * (nb.i));
-	res.i = 2 * nb.r * nb.i;
-	return (res);
-}
-
-t_complex	add_complex(t_complex nb1, t_complex nb2)
-{
-	t_complex	res;
-
-	res.r = nb1.r + nb2.r;
-	res.i = nb1.i + nb2.i;
-	return (res);
-}
 
 int	get_color_iteration(double t)
 {
@@ -42,6 +24,32 @@ int	get_color_iteration(double t)
 	return ((r << 16) | (g << 8) | b);
 }
 
+void	my_mlx_pixel_put(t_data *data, t_point p, int color)
+{
+	char	*dst;
+
+	dst = data->addr + (p.y * data->line_length + p.x
+			* (data->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
+}
+
+void	display_fractal(t_fractal *fractal)
+{
+	t_point	p;
+
+	p.y = 0;
+	while (p.y < WIDTH)
+	{
+		p.x = 0;
+		while (p.x < HEIGHT)
+		{
+			display_pixel(fractal, p);
+			p.x++;
+		}
+		p.y++;
+	}
+}
+
 void	display_pixel(t_fractal *fractal, t_point p)
 {
 	t_complex	c;
@@ -51,7 +59,7 @@ void	display_pixel(t_fractal *fractal, t_point p)
 	{
 		c.r = convert_range(p.x, WIDTH, -1.5, 0.5)
 			* fractal->zoom + fractal->shift_x;
-		c.i = convert_range(p.y, HEIGHT, -1, 1)
+		c.i = convert_range(p.y, HEIGHT, 1, -1)
 			* fractal->zoom + fractal->shift_y;
 		z.r = c.r;
 		z.i = c.i;
@@ -62,7 +70,7 @@ void	display_pixel(t_fractal *fractal, t_point p)
 		c.i = fractal->julia_y;
 		z.r = convert_range(p.x, WIDTH, -1.5, 1.5)
 			* fractal->zoom + fractal->shift_x;
-		z.i = convert_range(p.y, HEIGHT, -1.5, 1.5)
+		z.i = convert_range(p.y, HEIGHT, 1.5, -1.5)
 			* fractal->zoom + fractal->shift_y;
 	}
 	draw_pixel(fractal, &c, &z, p);
@@ -76,7 +84,7 @@ void	draw_pixel(t_fractal *fractal, t_complex *c, t_complex *z, t_point p)
 	int			color;
 
 	i = 0;
-	limit = 100;
+	limit = 70;
 	while ((z->r * z->r + z->i * z->i) < 4)
 	{
 		i++;

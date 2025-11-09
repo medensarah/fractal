@@ -1,2 +1,1 @@
-Arguments julia x et y sont inverses ??
-Beaucoup trop lent sur lancement de mandelbrot
+

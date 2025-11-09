@@ -6,7 +6,7 @@
 /*   By: smedenec <smedenec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 20:49:33 by smedenec          #+#    #+#             */
-/*   Updated: 2025/11/07 23:37:54 by smedenec         ###   ########.fr       */
+/*   Updated: 2025/11/09 02:17:07 by smedenec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	fractal_init(t_fractal *fractal)
 	fractal->shift_x = 0;
 	fractal->shift_y = 0;
 	fractal->zoom = 1;
-	fractal->color_change = 0;
 }
 
 void	*init_img(t_fractal *fractal)
@@ -58,13 +57,4 @@ void	*init_img(t_fractal *fractal)
 	if (!(fractal->img.addr))
 		return (close_handler(fractal), NULL);
 	return (fractal);
-}
-
-int	mouse_wrapper(int button, int x, int y, void *param)
-{
-	t_point	p;
-
-	p.x = x;
-	p.y = y;
-	return (mouse_handler(button, p, (t_fractal *)param));
 }

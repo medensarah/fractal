@@ -6,7 +6,7 @@
 /*   By: smedenec <smedenec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 20:43:30 by smedenec          #+#    #+#             */
-/*   Updated: 2025/11/08 01:50:02 by smedenec         ###   ########.fr       */
+/*   Updated: 2025/11/09 02:17:25 by smedenec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,13 @@ int	key_handler(int keycode, t_fractal *fractal)
 	else if (keycode == XK_Right || keycode == 65363)
 		fractal->shift_x += (0.2 * fractal->zoom);
 	else if (keycode == XK_Up || keycode == 65362)
-		fractal->shift_y -= (0.2 * fractal->zoom);
-	else if (keycode == XK_Down || keycode == 65364)
 		fractal->shift_y += (0.2 * fractal->zoom);
+	else if (keycode == XK_Down || keycode == 65364)
+		fractal->shift_y -= (0.2 * fractal->zoom);
 	else if (keycode == XK_plus || keycode == 65451)
 		fractal->iterations += 5;
 	else if (keycode == XK_minus || keycode == 65453)
 		fractal->iterations -= 5;
-	else if (keycode == 101)
-		fractal->color_change += 50;
 	display_fractal(fractal);
 	mlx_put_image_to_window(fractal->mlx_ptr, fractal->mlx_win,
 		fractal->img.img, 0, 0);
@@ -59,4 +57,13 @@ int	mouse_handler(int button, t_point p, t_fractal *fractal)
 	mlx_put_image_to_window(fractal->mlx_ptr,
 		fractal->mlx_win, fractal->img.img, 0, 0);
 	return (0);
+}
+
+int	mouse_wrapper(int button, int x, int y, void *param)
+{
+	t_point	p;
+
+	p.x = x;
+	p.y = y;
+	return (mouse_handler(button, p, (t_fractal *)param));
 }

@@ -6,7 +6,7 @@
 /*   By: smedenec <smedenec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 21:09:32 by smedenec          #+#    #+#             */
-/*   Updated: 2025/11/08 01:50:12 by smedenec         ###   ########.fr       */
+/*   Updated: 2025/11/09 02:17:43 by smedenec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ typedef struct t_fractal
 	void	*mlx_win;
 	int		iterations;
 	char	*name;
-	int		active_julia;
-	int		color_change;
 	double	shift_x;
 	double	shift_y;
 	double	julia_x;
@@ -62,30 +60,34 @@ typedef struct s_point
 	int	y;
 }			t_point;
 
-void	*init_img(t_fractal *fractal);
-void	fractal_init(t_fractal *fractal);
-void	event_init(t_fractal *fractal);
-void	my_mlx_pixel_put(t_data *data, t_point p, int color);
+void		*init_img(t_fractal *fractal);
+void		fractal_init(t_fractal *fractal);
+void		event_init(t_fractal *fractal);
+void		my_mlx_pixel_put(t_data *data, t_point p, int color);
 
 //handler
-int		mouse_wrapper(int button, int x, int y, void *param);
-int		mouse_handler(int button, t_point p, t_fractal *fractal);
-int		key_handler(int keycode, t_fractal *fractal);
-int		close_handler(t_fractal *fractal);
+int			mouse_wrapper(int button, int x, int y, void *param);
+int			mouse_handler(int button, t_point p, t_fractal *fractal);
+int			key_handler(int keycode, t_fractal *fractal);
+int			close_handler(t_fractal *fractal);
 
 //graphics
-void	display_fractal(t_fractal *fractal);
-void	display_pixel(t_fractal *fractal, t_point p);
-void	draw_pixel(t_fractal *fractal, t_complex *c, t_complex *z, t_point p);
+void		display_fractal(t_fractal *fractal);
+void		display_pixel(t_fractal *fractal, t_point p);
+void		draw_pixel(t_fractal *fractal, t_complex *c,
+				t_complex *z, t_point p);
 
 //maths
-double	convert_range(double v, double max_src, double min_dst, double max_dst);
+double		convert_range(double v, double max_src,
+				double min_dst, double max_dst);
+t_complex	add_complex(t_complex nb1, t_complex nb2);
+t_complex	square_complex(t_complex nb);
 
 //parsing
-double	atoi_double(char *str);
-int		is_number(char *str);
-int		parsing(int argc, char **argv, t_fractal *fractal);
-int		ft_strcmp(const char *s1, const char *s2);
-int		strlong(char *str);
+double		atoi_double(char *str);
+int			is_number(char *str);
+int			parsing(int argc, char **argv, t_fractal *fractal);
+int			ft_strcmp(const char *s1, const char *s2);
+int			strlong(char *str);
 
 #endif
