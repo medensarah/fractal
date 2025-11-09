@@ -6,7 +6,7 @@
 /*   By: smedenec <smedenec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 20:43:30 by smedenec          #+#    #+#             */
-/*   Updated: 2025/11/09 03:42:49 by smedenec         ###   ########.fr       */
+/*   Updated: 2025/11/09 18:09:59 by smedenec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,16 @@ void	display_fractal(t_fractal *fractal)
 {
 	t_point	p;
 
-	p.y = 0;
-	while (p.y < WIDTH)
+	p.x = 0;
+	while (p.x < WIDTH)
 	{
-		p.x = 0;
-		while (p.x < HEIGHT)
+		p.y = 0;
+		while (p.y < HEIGHT)
 		{
 			display_pixel(fractal, p);
-			p.x++;
+			p.y++;
 		}
-		p.y++;
+		p.x++;
 	}
 }
 
@@ -57,9 +57,9 @@ void	display_pixel(t_fractal *fractal, t_point p)
 
 	if (!strcmp(fractal->name, "mandelbrot"))
 	{
-		c.r = convert_range(p.x, WIDTH, -1.5, 0.5)
+		c.r = convert_range(p.x, WIDTH, -2, 2)
 			* fractal->zoom + fractal->shift_x;
-		c.i = convert_range(p.y, HEIGHT, 1, -1)
+		c.i = convert_range(p.y, HEIGHT, 2, -2)
 			* fractal->zoom + fractal->shift_y;
 		z.r = c.r;
 		z.i = c.i;
@@ -84,7 +84,7 @@ void	draw_pixel(t_fractal *fractal, t_complex *c, t_complex *z, t_point p)
 	int			color;
 
 	i = 0;
-	limit = 70;
+	limit = 30;
 	while ((z->r * z->r + z->i * z->i) < 4)
 	{
 		i++;

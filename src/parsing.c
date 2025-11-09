@@ -6,7 +6,7 @@
 /*   By: smedenec <smedenec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 20:49:17 by smedenec          #+#    #+#             */
-/*   Updated: 2025/11/09 03:06:55 by smedenec         ###   ########.fr       */
+/*   Updated: 2025/11/09 18:35:44 by smedenec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,28 +82,25 @@ double	atoi_double(char *str)
 int	is_number(char *str)
 {
 	int	i;
-	int	sign;
 	int	point;
 
 	i = 0;
-	sign = 0;
 	point = 0;
 	if (!str)
 		return (0);
 	while ((str[i] == ' ') || (str[i] >= 9 && str[i] <= 13))
 		i++;
+	if ((str[i] == '+') || (str[i] == '-'))
+			i++;
 	while (str[i])
 	{
-		if ((str[i] != '+') && (str[i] != '-') && (str[i] != '.')
-			&& !(str[i] >= '0' && str[i] <= '9'))
+		if ((str[i] != '.') && !(str[i] >= '0' && str[i] <= '9'))
 			return (0);
-		if ((str[i] == '+') && (str[i] == '-'))
-			sign++;
 		if (str[i] == '.')
 			point++;
 		i++;
 	}
-	if (point != 1 || sign >= 2)
+	if (point != 1)
 		return (0);
 	return (1);
 }

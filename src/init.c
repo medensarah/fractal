@@ -6,7 +6,7 @@
 /*   By: smedenec <smedenec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 20:49:33 by smedenec          #+#    #+#             */
-/*   Updated: 2025/11/09 03:27:36 by smedenec         ###   ########.fr       */
+/*   Updated: 2025/11/09 18:11:27 by smedenec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	event_init(t_fractal *fractal)
 
 void	fractal_init(t_fractal *fractal)
 {
-	fractal->iterations = 3000;
 	fractal->shift_x = 0;
 	fractal->shift_y = 0;
 	fractal->zoom = 1;

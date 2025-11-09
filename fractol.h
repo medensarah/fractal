@@ -6,7 +6,7 @@
 /*   By: smedenec <smedenec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 21:09:32 by smedenec          #+#    #+#             */
-/*   Updated: 2025/11/09 02:17:43 by smedenec         ###   ########.fr       */
+/*   Updated: 2025/11/09 18:11:12 by smedenec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <math.h>
 # include "minilibx-linux/mlx.h"
 
-# define WIDTH 1080
+# define WIDTH 1920
 # define HEIGHT 1080
 
 typedef struct s_data {
@@ -38,7 +38,6 @@ typedef struct t_fractal
 {
 	void	*mlx_ptr;
 	void	*mlx_win;
-	int		iterations;
 	char	*name;
 	double	shift_x;
 	double	shift_y;
