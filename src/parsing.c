@@ -6,7 +6,7 @@
 /*   By: smedenec <smedenec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 20:49:17 by smedenec          #+#    #+#             */
-/*   Updated: 2025/11/09 02:25:20 by smedenec         ###   ########.fr       */
+/*   Updated: 2025/11/09 03:06:55 by smedenec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int	strlong(char *str)
 	i = 0;
 	if (!str)
 		return (0);
-	if (str[i] == '+' && (str[i] == '-'))
+	if (str[i] == '+' || (str[i] == '-'))
 		i++;
 	if (!(str[i] >= '0' && str[i] <= '9'))
 		return (0);
@@ -125,7 +125,8 @@ int	strlong(char *str)
 		return (0);
 	if (str[i + 1] && !(str[i + 1] >= '0' && str[i + 1] <= '9'))
 		return (0);
-	if (i >= 2)
+	if ((i >= 2 && !(str[0] == '+' || (str[0] == '-')))
+		|| (i >= 3 && (str[0] == '+' || (str[0] == '-'))))
 		return (0);
 	return (1);
 }

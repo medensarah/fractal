@@ -6,7 +6,7 @@
 /*   By: smedenec <smedenec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 20:43:30 by smedenec          #+#    #+#             */
-/*   Updated: 2025/11/09 02:17:25 by smedenec         ###   ########.fr       */
+/*   Updated: 2025/11/09 03:41:48 by smedenec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ int	key_handler(int keycode, t_fractal *fractal)
 	else if (keycode == XK_Down || keycode == 65364)
 		fractal->shift_y -= (0.2 * fractal->zoom);
 	else if (keycode == XK_plus || keycode == 65451)
-		fractal->iterations += 5;
+		fractal->iterations += 2;
 	else if (keycode == XK_minus || keycode == 65453)
-		fractal->iterations -= 5;
+		fractal->iterations -= 2;
 	display_fractal(fractal);
 	mlx_put_image_to_window(fractal->mlx_ptr, fractal->mlx_win,
 		fractal->img.img, 0, 0);
@@ -53,6 +53,8 @@ int	mouse_handler(int button, t_point p, t_fractal *fractal)
 		fractal->zoom *= 1.25;
 	else if (button == Button4)
 		fractal->zoom *= 0.75;
+	else if (button == Button1 || button == Button2 || button == Button3)
+		return (0);
 	display_fractal(fractal);
 	mlx_put_image_to_window(fractal->mlx_ptr,
 		fractal->mlx_win, fractal->img.img, 0, 0);
